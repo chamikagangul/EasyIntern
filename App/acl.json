@@ -20,7 +20,8 @@
             ]
         },
         "Register": [
-            "logout"
+            "logout",
+            "editprofilestudent"
         ],
         "Companies": [
             "*"

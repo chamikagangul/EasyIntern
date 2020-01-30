@@ -19,6 +19,7 @@ body {
 }
 
 .Container {
+
     position: relative;
     min-width: 500px;
     margin: auto;

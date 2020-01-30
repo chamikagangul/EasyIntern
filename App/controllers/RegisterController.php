@@ -1,34 +1,37 @@
 <?php
-class RegisterController extends Controller{
-  public function __construct($controller,$action){
-    parent::__construct($controller,$action);
+class RegisterController extends Controller
+{
+  public function __construct($controller, $action)
+  {
+    parent::__construct($controller, $action);
     $this->load_model('Users');
     $this->view->setLayout('default');
   }
-  public function loginAction(){
+  public function loginAction()
+  {
     $validation = new Validate();
-    if($_POST){
+    if ($_POST) {
       //form Invalid
-      $validation->check($_POST,[
-        'username' =>[
-          'display'=> 'Username',
-          'required' =>true
+      $validation->check($_POST, [
+        'username' => [
+          'display' => 'Username',
+          'required' => true
         ],
-        'password' =>[
-          'display'=> 'Password',
-          'required' =>true,
+        'password' => [
+          'display' => 'Password',
+          'required' => true,
           'min' => 6
         ]
       ]);
-      if($validation->passed()){
+      if ($validation->passed()) {
         $user = $this->UsersModel->findByUsername($_POST['username']);
         //dnd(password_hash("pass",PASSWORD_DEFAULT));
-        
-        if($user && password_verify(Input::get('password'),$user->password)){
+
+        if ($user && password_verify(Input::get('password'), $user->password)) {
           $remember = (isset($_POST["remember_me"]) && Input::get('remember_me')) ? true : false;
           $user->login($remember);
           Router::redirect('');
-        }else{
+        } else {
           $validation->addError("There is an error with username or password");
         }
       }
@@ -37,19 +40,21 @@ class RegisterController extends Controller{
     $this->view->render('register/login');
   }
 
-  public function logoutAction(){
-    if(currentUser()){
+  public function logoutAction()
+  {
+    if (currentUser()) {
       currentUser()->logout();
       Router::redirect('register/login');
     }
   }
 
-  public function registerAction(){
+  public function registerAction()
+  {
     $validation = new Validate();
-    $posted_values = ['fname'=>'','lname'=>'','username'=>'','email'=>'','password'=>'','confirm'=>''];
-    if($_POST){
+    $posted_values = ['fname' => '', 'lname' => '', 'username' => '', 'email' => '', 'password' => '', 'confirm' => ''];
+    if ($_POST) {
       $posted_values = posted_values($_POST);
-      $validation->check($_POST,[
+      $validation->check($_POST, [
         'fname' => [
           'display' => 'First name',
           'required' => true
@@ -61,40 +66,74 @@ class RegisterController extends Controller{
         'username' => [
           'display' => 'Username',
           'required' => true,
-          'unique' =>'users',
+          'unique' => 'users',
           'min' => 6,
           'max' => 150
         ],
         'email' => [
           'display' => 'Email Field',
           'required' => true,
-          'unique' =>'users',
+          'unique' => 'users',
           'max' => 150,
           'validEmail' => true
         ],
         'password' => [
           'display' => 'Password',
           'required' => true,
-          'min'=>6
+          'min' => 6
         ],
         'confirm' => [
           'display' => 'Confirm Password',
           'required' => true,
-          'min'=>6,
+          'min' => 6,
           'matches' => 'password'
         ]
       ]);
-     
-      if($validation->passed()){
+
+      if ($validation->passed()) {
         $newUser =  new Users();
         $newUser->registerNewUser($_POST);
         Router::redirect('register/login');
       }
     }
-    $this->view->post =$posted_values;
-    $this->view->displayErrors =$validation->displayErrors();
-    
-    $this->view->render('register/register');
+    $this->view->post = $posted_values;
+    $this->view->displayErrors = $validation->displayErrors();
 
+    $this->view->render('register/register');
+  }
+
+  public function editProfileStudentAction()
+  {
+    $validation = new Validate();
+    $posted_values = ['fname' => '', 'lname' => '', 'email' => '', 'date_of_birth' => '', 'field' => '', 'contact' => '', 'skills' => '', 'profile_pic' => '', 'cv_name' => '', 'cv_data' => ''];
+    if ($_POST) {
+      $posted_values = posted_values($_POST);
+      $validation->check($_POST, [
+        'fname' => [
+          'display' => 'First name',
+          'required' => true
+        ],
+        'lname' => [
+          'display' => 'Last name',
+          'required' => true
+        ],
+        'email' => [
+          'display' => 'Email Field',
+          'required' => true,
+          'unique' => 'users',
+          'max' => 150,
+          'validEmail' => true
+        ]
+      ]);
+      
+      if ($validation->passed()) {
+        currentUser()->editProfileStudent(currentUser()->id,$_POST);
+        Router::redirect('home/index');
+      }
+    }
+    $this->view->post = $posted_values;
+    $this->view->displayErrors = $validation->displayErrors();
+
+    $this->view->render('register/editProfileStudent');
   }
 }

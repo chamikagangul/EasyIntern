@@ -83,4 +83,7 @@ class Users  extends Model{
     if(empty($this->acl)) return [];
     return json_decode($this->acl,true);
   }
+  public function editProfileStudent($id,$fields){
+    $this->_db->update("student", $id, $fields);
+  }
 }

@@ -8,4 +8,6 @@ class RestrictedController extends Controller{
       public function indexAction(){
         $this->view->render("restricted/index");
       }
+
+      
 } 
