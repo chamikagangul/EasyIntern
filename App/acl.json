@@ -1,0 +1,60 @@
+{
+    "Guest": {
+        "denied": {},
+        "Home": [
+            "*"
+        ],
+        "Register": [
+            "login",
+            "register"
+        ],
+        "Restricted": [
+            "*"
+        ]
+    },
+    "LogedIn-Student": {
+        "denied": {
+            "Register": [
+                "register",
+                "login"
+            ]
+        },
+        "Register": [
+            "logout"
+        ],
+        "Companies": [
+            "*"
+        ],
+        "Notification": [
+            "*"
+        ],
+        "Settings": [
+            "*"
+        ],
+        "Profile": [
+            "*"
+        ]
+    },
+    "LogedIn-Company": {
+        "denied": {
+            "Register": [
+                "register",
+                "login"
+            ]
+        },
+        "Register": [
+            "logout"
+        ]
+    },
+    "LogedIn-Admin": {
+        "denied": {
+            "Register": [
+                "register",
+                "login"
+            ]
+        },
+        "Register": [
+            "logout"
+        ]
+    }
+}

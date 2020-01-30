@@ -1,0 +1,40 @@
+.red{
+  color:red;
+}
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+
+}
+.waring{
+  position: relative;
+ margin-right: 25px;
+ margin-right: 25px; 
+ padding-left: 25px;
+}
+
+.scard-text i {
+  font-size: 32px;
+  color: #FFF;
+}
+
+.shadow-nohover {
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.shadow {
+  box-shadow: 5px 5px 10px 5px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.footer {
+  background-image: url(https://cdn5.vectorstock.com/i/1000x1000/80/49/office-desk-laptop-background-vector-1558049.jpg
+);
+  background-repeat: no-repeat;
+}

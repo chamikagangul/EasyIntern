@@ -1,0 +1,15 @@
+{
+    "Home": "home",
+    "Companies": "companies",
+    "Notification": "notification",
+    "Contacts": {
+        "My Contacts": "MyC"
+    },
+    "USERNAME": {
+        "Login": "register/login",
+        "Register": "register/register",
+        "Profile" : "profile",
+        "Settings" : "settings",
+        "Logout": "register/logout"
+    }
+}
