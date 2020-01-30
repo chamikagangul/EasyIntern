@@ -9,13 +9,19 @@ function dangerCard($error)
     <div class="card-body text-danger">
         <h5 class="card-title">Warning</h5>
     EOT;
-    foreach($error as $e){
-        $html .= '<p class="card-text">'.$e.'</p>';
+    foreach($error as $er){
+        if(is_array($er)){
+            foreach($er as $e){
+                $html .= '<li class="card-text">'.$e.'</li>';
+            }
+        }else{
+            $html .= '<li class="card-text">'.$er.'</li>';
+        }
+        
     }
     $html .=<<<EOT
-       
     </div>
-</div>;
+</div>
 EOT;
     return $html;
 }
@@ -32,7 +38,7 @@ function jobCard()
         </p>
         <a href="#" class="btn btn-primary">Go somewhere</a>
     </div>
-</div>;
+</div>
 EOT;
 
     return $html;
