@@ -1,7 +1,7 @@
 <?php
 
 define("DEBUG",true);
-define("DB_NAME","test"); //database Name
+define("DB_NAME","internship"); //database Name
 define("DB_USER","root"); //db user
 define("DB_PASSWORD",""); //db password
 define("DB_HOST","127.0.0.1"); //db host

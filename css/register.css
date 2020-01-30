@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Numans');
+html,
+body {
+    background-image: url('https://i.pinimg.com/originals/b7/aa/63/b7aa63736b9c8c8804fb37a83df20b1d.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    height: 100%;
+    font-family: 'Numans', sans-serif;
+}
+
+.container {
+    height: 100%;
+    align-content: center;
+}
+
+.card {
+    height: 500px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 450px;
+}
+
+.social_icon span {
+    font-size: 60px;
+    margin-left: 10px;
+    color: #800080;
+    /*i cahnged this but no change seen */
+}
+
+.social_icon span:hover {
+    color: white;
+    cursor: pointer;
+}
+
+.card-header h3 {
+    color: black;
+}
+
+.social_icon {
+    position: absolute;
+    right: 20px;
+    top: -45px;
+}
+
+.input-group-prepend span {
+    width: 50px;
+    background-color: rgb(10, 156, 224);
+    color: black;
+    border: 0 !important;
+}
+
+input:focus {
+    outline: 0 0 0 0 !important;
+    box-shadow: 0 0 0 0 !important;
+}
+
+.remember {
+    color: black;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.login_btn {
+    color: black;
+    background-color: rgb(7, 49, 189);
+    width: 100px;
+}
+
+.login_btn:hover {
+    color: rgb(10, 156, 224);
+    background-color: rgb(0, 0, 0);
+}
+
+.donthave,
+.signup {
+    color: rgb(0, 0, 0);
+}
+
+.links a {
+    margin-left: 4px;
+}

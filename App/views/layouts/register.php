@@ -29,8 +29,8 @@
     <link rel="stylesheet" href="<?= PROOT ?>css/css_applicant/flaticon.css">
     <link rel="stylesheet" href="<?= PROOT ?>css/css_applicant/icomoon.css">
     <link rel="stylesheet" href="<?= PROOT ?>css/css_applicant/style.css">
-    <link rel="stylesheet" href="<?= PROOT ?>css/custom.css">
 
+    <link rel="stylesheet" href="<?= PROOT ?>css/register.css">
     <title><?= $this->sitetitle();?></title>
     <?= $this->content('head'); ?>
 

@@ -2,28 +2,44 @@
 
 function dangerCard($error)
 {
-
+/*
     $html = <<< EOT
-     <div class="card border-danger mb-3" style="width:auto" id="waring">
+     <div class="card border-danger mb-3 " style="width:auto" id="waring">
     <!-- <div class="card-header">Warning</div> -->
     <div class="card-body text-danger">
         <h5 class="card-title">Warning</h5>
     EOT;
     foreach($error as $er){
         if(is_array($er)){
-            foreach($er as $e){
-                $html .= '<li class="card-text">'.$e.'</li>';
-            }
+            $html .= '<li class="card-text">'.$er[0].'</li>';   
         }else{
             $html .= '<li class="card-text">'.$er.'</li>';
-        }
-        
+        }  
     }
     $html .=<<<EOT
     </div>
 </div>
 EOT;
     return $html;
+    */
+    $html = <<< EOT
+    <div class="row"> <div class="alert alert-danger"> <strong>Warning!</strong> 
+    EOT;
+
+    foreach($error as $er){
+        if(is_array($er)){
+            $html .= '<li class="card-text">'.$er[0].'</li>';   
+        }else{
+            $html .= '<li class="card-text">'.$er.'</li>';
+        }  
+    }
+    $html .= <<< EOT
+    </div>
+    </div> 
+    EOT;
+
+    
+return $html;
 }
 
 function jobCard()
