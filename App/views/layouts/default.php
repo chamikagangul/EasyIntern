@@ -63,8 +63,6 @@
     <link href="<?= PROOT ?>owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     
     
-
-
     <link rel="apple-touch-icon" href="<?= PROOT ?>images/apple-touch-icon.html">
     <link rel="shortcut icon" type="image/ico" href="<?= PROOT ?>images/favicon.html" />
 

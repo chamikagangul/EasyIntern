@@ -23,7 +23,6 @@ class Users  extends Model
       
       if ($u) {
         $this->acl = $u->acl;
-        
         if ($this->userType() == "LogedIn-Student") {
           $u2 = $this->_db->findFirst('student', ['conditions' => 'id=?', 'bind' => [$user]]);
         }

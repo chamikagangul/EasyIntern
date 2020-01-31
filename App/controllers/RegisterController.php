@@ -52,9 +52,8 @@ class RegisterController extends Controller
   public function registerAction()
   {
     $validation = new Validate();
-    $posted_values = ['fname' => '', 'lname' => '', 'username' => '', 'email' => '', 'password' => '', 'confirm' => ''];
+    $posted_values = ['fname' => '',  'username' => '', 'email' => '', 'password' => '', 'confirm' => '','acl'=>''];
     if ($_POST) {
-      $posted_values = posted_values($_POST);
       $validation->check($_POST, [
         'fname' => [
           'display' => 'First name',
@@ -91,7 +90,12 @@ class RegisterController extends Controller
         $newUser =  new Users();
         $acl = $_POST['acl'];
         $_POST['acl'] = '["LogedIn-' . $acl . '"]';
-        $newUser->registerNewUser($_POST);
+        foreach($posted_values as $k=>$v){
+          $posted_values[$k] = $_POST[$k];
+        }
+        
+        $newUser->registerNewUser($posted_values);
+
         $id = $newUser->findByUsername($_POST["username"])->id;
         $params["id"] = $id;
         if ($acl == "Student") {
