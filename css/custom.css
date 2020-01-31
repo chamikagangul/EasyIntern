@@ -57,5 +57,7 @@ body {
 }
 
 #navigation{
+    position: fixed;
+    top: 0px;
     
 }
