@@ -7,7 +7,7 @@
         "Login": "register/login",
         "Register": "register/register",
         "Profile" : "profile",
-        "Edit Profile" : "register/editprofilestudent",
+        "Edit Profile" : "register/editprofile",
         "Logout": "register/logout"
     }
 }

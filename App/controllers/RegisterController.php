@@ -114,70 +114,126 @@ class RegisterController extends Controller
     $this->view->render('register/register');
   }
 
-  public function editProfileStudentAction()
+  public function editProfileAction()
   {
-    $validation = new Validate();
-    $posted_values = ['fname' => '', 'lname' => '', 'email' => '', 'date_of_birth' => '', 'field' => '', 'contact' => '', 'skills' => '', 'profile_pic' => '', 'cv_name' => '', 'cv_data' => ''];
-    $u = currentUser();
-    foreach ($posted_values as $key => $value) {
-      $posted_values[$key] = $u->$key;
-      # code...
-    }
-    if ($_POST) {
-      $posted_values = posted_values($_POST);
-      $validation->check($_POST, [
-        'email' => [
-          'display' => 'Email Field',
-          'validEmail' => true,
-          'required' => true
-        ],
-        'fname' => [
-          'display' => 'First Name',
-          'required' => true
-        ],
-        'lname' => [
-          'display' => 'Last Name',
-          'required' => true
-        ],
-        'date_of_birth' => [
-          'display' => 'Date of Birth',
-          'required' => true
-        ],
-        'fname' => [
-          'display' => 'First Name',
-          'required' => true
-        ],
-        'field' => [
-          'display' => 'Field',
-          'required' => true
-        ],
-        'skills' => [
-          'display' => 'Skill',
-          'required' => true
-        ],
-        'contact' => [
-          'display' => 'Phone number',
-          'required' => true
-        ]
-
-      ]);
-
-      if ($validation->passed()) {
-        $id = currentUser()->id;
-        $params = [];
-        foreach ($_POST as $k => $v) {
-          if ($v != '') {
-            $params[$k] = $v;
-          }
-        }
-
-        currentUser()->editProfile($id, $params);
-        Router::redirect('home/index');
+    if (currentUser()->userType() == "LogedIn-Student") {
+      $validation = new Validate();
+      $posted_values = ['fname' => '', 'lname' => '', 'email' => '', 'date_of_birth' => '', 'field' => '', 'contact' => '', 'skills' => '', 'profile_pic' => '', 'cv_name' => '', 'cv_data' => ''];
+      $u = currentUser();
+      foreach ($posted_values as $key => $value) {
+        $posted_values[$key] = $u->$key;
       }
-    }
-    $this->view->post = $posted_values;
-    $this->view->displayErrors = $validation->displayErrors();
+      if ($_POST) {
+        $posted_values = posted_values($_POST);
+        $validation->check($_POST, [
+          'email' => [
+            'display' => 'Email Field',
+            'validEmail' => true,
+            'required' => true
+          ],
+          'fname' => [
+            'display' => 'First Name',
+            'required' => true
+          ],
+          'lname' => [
+            'display' => 'Last Name',
+            'required' => true
+          ],
+          'date_of_birth' => [
+            'display' => 'Date of Birth',
+            'required' => true
+          ],
+          'fname' => [
+            'display' => 'First Name',
+            'required' => true
+          ],
+          'field' => [
+            'display' => 'Field',
+            'required' => true
+          ],
+          'skills' => [
+            'display' => 'Skill',
+            'required' => true
+          ],
+          'contact' => [
+            'display' => 'Phone number',
+            'required' => true
+          ]
 
-    $this->view->render('register/editProfileStudent');
+        ]);
+
+        if ($validation->passed()) {
+          $id = currentUser()->id;
+          $params = [];
+          foreach ($_POST as $k => $v) {
+            if ($v != '') {
+              $params[$k] = $v;
+            }
+          }
+
+          currentUser()->editProfile($id, $params);
+          Router::redirect('home/index');
+        }
+      }
+      $this->view->post = $posted_values;
+      $this->view->displayErrors = $validation->displayErrors();
+      $this->view->render('register/editProfileStudent');
+
+    }else if (currentUser()->userType() == "LogedIn-Company") {
+      $validation = new Validate();
+      $posted_values = ['name' => '', 'email' => '', 'address' => '', 'field' => '', 'contact' => '', 'details' => ''];
+      $u = currentUser();
+      foreach ($posted_values as $key => $value) {
+        $posted_values[$key] = $u->$key;
+      }
+      if ($_POST) {
+        $posted_values = posted_values($_POST);
+        $validation->check($_POST, [
+          'email' => [
+            'display' => 'Email Field',
+            'validEmail' => true,
+            'required' => true
+          ],
+          'name' => [
+            'display' => 'First Name',
+            'required' => true
+          ],
+          'address' => [
+            'display' => 'Address',
+            'required' => true
+          ],
+          'field' => [
+            'display' => 'Field',
+            'required' => true
+          ],
+          'details' => [
+            'display' => 'Details',
+            'required' => true
+          ],
+          'contact' => [
+            'display' => 'Phone number',
+            'required' => true
+          ]
+
+        ]);
+
+        if ($validation->passed()) {
+          $id = currentUser()->id;
+          $params = [];
+          foreach ($_POST as $k => $v) {
+            if ($v != '') {
+              $params[$k] = $v;
+            }
+          }
+
+          currentUser()->editProfile($id, $params);
+          Router::redirect('home/index');
+        }
+      }
+      $this->view->post = $posted_values;
+      $this->view->displayErrors = $validation->displayErrors();
+      $this->view->render('register/editProfileCompany');
+    }
+
   }
 }

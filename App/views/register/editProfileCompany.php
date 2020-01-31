@@ -7,13 +7,8 @@
   <div class=""><?= $this->displayErrors?>
   </div>
   <div class="form-group">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="fname" class='form-control' value="<?= $this->post['fname']?>">
-  </div>
-
-  <div class="form-group">
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lname" class='form-control' value="<?= $this->post['lname']?>">
+    <label for="fname">Name</label>
+    <input type="text" id="name" name="name" class='form-control' value="<?= $this->post['name']?>">
   </div>
  
 
@@ -23,8 +18,8 @@
   </div>
 
   <div class="form-group">
-    <label for="date_of_birth">Date of birth</label>
-    <input type="text" id="date_of_birth" name="date_of_birth" class='form-control' value="<?= $this->post['date_of_birth']?>">
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address" class='form-control' value="<?= $this->post['address']?>">
   </div>
 
   <div class="form-group">
@@ -38,8 +33,8 @@
   </div>
 
   <div class="form-group">
-    <label for="skills">Skills</label>
-    <input type="text" id="skills" name="skills" class='form-control' value="<?= $this->post['skills']?>">
+    <label for="details">Details</label>
+    <input type="text" id="details" name="details" class='form-control' value="<?= $this->post['details']?>">
   </div>
 
 

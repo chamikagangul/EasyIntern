@@ -15,33 +15,31 @@ class Users  extends Model
     if ($user != '') {
       if (is_int($user)) {
         $u = $this->_db->findFirst('users', ['conditions' => 'id=?', 'bind' => [$user]]);
-
-
-        $u2 = $this->_db->findFirst('student', ['conditions' => 'id=?', 'bind' => [$user]]);
+        
       } else {
         $u = $this->_db->findFirst('users', ['conditions' => 'username=?', 'bind' => [$user]]);
-        $u2 = $this->_db->findFirst('student', ['conditions' => 'username=?', 'bind' => [$user]]);
+        
       }
+      
       if ($u) {
         $this->acl = $u->acl;
-        if ($this->acls()[0] == "LogedIn-Student") {
+        
+        if ($this->userType() == "LogedIn-Student") {
           $u2 = $this->_db->findFirst('student', ['conditions' => 'id=?', 'bind' => [$user]]);
         }
-        if ($this->acls()[0] == "LogedIn-Company") {
-          $u2 = $this->_db->findFirst('student', ['conditions' => 'id=?', 'bind' => [$user]]);
-        }
-      }
+        if ($this->userType() == "LogedIn-Company") {
 
-      if ($u) {
+          $u2 = $this->_db->findFirst('company', ['conditions' => 'id=?', 'bind' => [$user]]);
+        }
         foreach ($u as $key => $value) {
           $this->$key = $value;
         }
-      }
-      if ($u2) {
-        foreach ($u2 as $key => $value) {
-          $this->$key = $value;
+        if ($u2) {
+          foreach ($u2 as $key => $value) {
+            $this->$key = $value;
+          }
         }
-      }
+      }    
     }
   }
 
