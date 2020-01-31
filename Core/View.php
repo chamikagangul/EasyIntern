@@ -6,6 +6,7 @@ class View {
 
   }
   public function render($viewName){
+    
     $viewArray = explode('/',$viewName);
     $viewString = implode(DS,$viewArray);
     if(file_exists(ROOT.DS.'App'.DS.'views'.DS.$viewString.'.php')){

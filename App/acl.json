@@ -1,9 +1,7 @@
 {
     "Guest": {
         "denied": {},
-        "Home": [
-            "*"
-        ],
+        
         "Register": [
             "login",
             "register"
@@ -19,6 +17,9 @@
                 "login"
             ]
         },
+        "Home": [
+            "*"
+        ],
         "Register": [
             "logout",
             "editprofile"
@@ -43,6 +44,9 @@
                 "login"
             ]
         },
+        "Home": [
+            "*"
+        ],
         "Register": [
             "logout",
             "editprofile"

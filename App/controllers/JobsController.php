@@ -17,9 +17,9 @@ class JobsController extends Controller
     $validation = new Validate();
     $posted_values = ['name' => '', 'skills' => '', 'vacancies' => '', 'salary' => '', 'job_details' => '', 'description' => ''];
     $u = currentUser();
-
+    
     if ($_POST) {
-      $posted_values = posted_values($_POST);
+
       $validation->check($_POST, [
         'name' => [
           'display' => 'First Name',
@@ -51,15 +51,17 @@ class JobsController extends Controller
       if ($validation->passed()) {
         $id = currentUser()->id;
         $params = [];
-        foreach ($_POST as $k => $v) {
-          if ($v != '') {
-            $params[$k] = $v;
-          }
-        }
+        
         if (currentUser()->userType() == "LogedIn-Company") {
-          $params["company"] = currentUser()->id;
+          foreach ($posted_values as $key => $value) {
+            $posted_values[$key] = $_POST[$key];
+    
+          }
+
+          
+          $posted_values["company"] = currentUser()->id;
           $job = new Job();
-          $job->addJob($params);
+          $job->addJob($posted_values);
           Router::redirect('home/index');
         }
       }
@@ -67,7 +69,7 @@ class JobsController extends Controller
     $this->view->post = $posted_values;
     $this->view->displayErrors = $validation->displayErrors();
 
-    $this->view->render('jobs/index');
+    $this->view->render('jobs/jobpost');
     //(new Job())->apply(["company"=>"1","job"=>"5"]);
   }
 

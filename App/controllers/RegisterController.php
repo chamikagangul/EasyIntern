@@ -120,11 +120,9 @@ class RegisterController extends Controller
       $validation = new Validate();
       $posted_values = ['fname' => '', 'lname' => '', 'email' => '', 'date_of_birth' => '', 'field' => '', 'contact' => '', 'skills' => '', 'profile_pic' => '', 'cv_name' => '', 'cv_data' => ''];
       $u = currentUser();
-      foreach ($posted_values as $key => $value) {
-        $posted_values[$key] = $u->$key;
-      }
+      
       if ($_POST) {
-        $posted_values = posted_values($_POST);
+        
         $validation->check($_POST, [
           'email' => [
             'display' => 'Email Field',
@@ -165,12 +163,9 @@ class RegisterController extends Controller
         if ($validation->passed()) {
           $id = currentUser()->id;
           $params = [];
-          foreach ($_POST as $k => $v) {
-            if ($v != '') {
-              $params[$k] = $v;
-            }
+          foreach ($posted_values as $k => $v) {
+              $params[$k] = $_POST[$k];
           }
-
           currentUser()->editProfile($id, $params);
           Router::redirect('home/index');
         }
@@ -218,6 +213,7 @@ class RegisterController extends Controller
         ]);
 
         if ($validation->passed()) {
+          
           $id = currentUser()->id;
           $params = [];
           foreach ($_POST as $k => $v) {

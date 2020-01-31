@@ -2,36 +2,9 @@
 <?php $this->end() ?>
 
 <?php $this->start('body') ?>
-<!doctype html>
-<html lang="en">
 
-<head>
-  <meta charset="utf-8">
-  <meta name="author" content="John Doe">
-  <meta name="description" content="">
-  <meta name="keywords" content="HTML,CSS,XML,JavaScript">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    .center {
-      margin: auto;
-      width: 50%;
-      border: 3px solid lightblue;
-      padding: 10px;
-    }
-  </style>
-  <title>Job Details</title>
-  <script src="js/4n2NXumNjtg5LPp6VXLlDicTUfA.js"></script>
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.html">
-  <link rel="shortcut icon" type="image/ico" href="images/favicon.html" />
-  <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-  <link href="css/matrialize.css" rel="stylesheet">
-  <link href="owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-</head>
 
-<body class="background-color-white-drak ">
+
   <section id="intro">
     <div class="carousel-item active">
       <div class="carousel-background"><img src="Images/slider1.jpg" alt=""></div>
@@ -83,7 +56,5 @@
       </div>
     </div>
   </section>
-</body>
 
-</html>
 <?php $this->end() ?>
