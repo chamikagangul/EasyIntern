@@ -1,4 +1,5 @@
-<?php $this->setSiteTitle("Home"); ?>
+<?php $u = currentUser(); ?>
+<?php $this->setSiteTitle("User Profile"); ?>
 
 <?php $this->start('body')?>
     <section class="ftco-about img ftco-section ftco-no-pt ftco-no-pb" id="about-section">
@@ -18,12 +19,11 @@
                             <h2 class="mb-4">About Applicant</h2>
                             <p>Small Introduction about Applicant(Personal mission statement)</p>
                             <ul class="about-info mt-4 px-md-0 px-2">
-                                <li class="d-flex"><span>Name:</span> <span>Janith Gnepola</span></li>
-                                <li class="d-flex"><span>Date of birth:</span> <span>November 28, 1997</span></li>
-                                <li class="d-flex"><span>Department</span> <span>Civil Engineearing</span></li>
-                                <li class="d-flex"><span>Class:</span> <span>2nd Upper</span></li>
-                                <li class="d-flex"><span>Email:</span> <span>abcdefghijkl@gmail.com</span></li>
-                                <li class="d-flex"><span>Phone: </span> <span>+947132659</span></li>
+                                <li class="d-flex"><span>Name:</span> <span><?= $u->fname." ".$u->lname ?></span></li>
+                                <li class="d-flex"><span>Date of birth:</span> <span><?= $u->date_of_birth ?></span></li>
+                                <li class="d-flex"><span>Department</span> <span><?= $u->field?></span></li>
+                                <li class="d-flex"><span>Email:</span> <span><?= $u->email?></span></li>
+                                <li class="d-flex"><span>Phone: </span> <span><?= $u->contact?></span></li>
                             </ul>
                         </div>
                     </div>

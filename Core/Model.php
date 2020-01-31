@@ -95,7 +95,9 @@ class Model
   {
     if (empty($fields)) return false;
     return $this->_db->insert($this->_table, $fields);
-  }
+  }  
+
+  
 
   public function update($id, $fields)
   {

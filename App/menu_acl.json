@@ -1,15 +1,13 @@
 {
-    "Home": "home",
+    "Home": "Home",
     "Companies": "companies",
     "Notification": "notification",
-    "Contacts": {
-        "My Contacts": "MyC"
-    },
+    "Add Jobs": "jobs",
     "USERNAME": {
         "Login": "register/login",
         "Register": "register/register",
         "Profile" : "profile",
-        "Settings" : "register/editprofilestudent",
+        "Edit Profile" : "register/editprofilestudent",
         "Logout": "register/logout"
     }
 }

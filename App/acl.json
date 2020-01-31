@@ -41,10 +41,14 @@
             "Register": [
                 "register",
                 "login"
+                
             ]
         },
         "Register": [
             "logout"
+        ],
+        "Jobs": [
+            "*"
         ]
     },
     "LogedIn-Admin": {

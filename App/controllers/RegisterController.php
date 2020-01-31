@@ -44,6 +44,7 @@ class RegisterController extends Controller
   {
     if (currentUser()) {
       currentUser()->logout();
+
       Router::redirect('register/login');
     }
   }
@@ -57,10 +58,6 @@ class RegisterController extends Controller
       $validation->check($_POST, [
         'fname' => [
           'display' => 'First name',
-          'required' => true
-        ],
-        'lname' => [
-          'display' => 'Last name',
           'required' => true
         ],
         'username' => [
@@ -92,7 +89,14 @@ class RegisterController extends Controller
 
       if ($validation->passed()) {
         $newUser =  new Users();
+        $_POST['acl']='["LogedIn-'.$_POST['acl'].'"]';
         $newUser->registerNewUser($_POST);
+        $id = $newUser->findByUsername($_POST["username"])->id;
+        $params["id"] = $id;
+        $params["fname"] = $_POST["fname"];
+        $params["email"] = $_POST["email"];
+        $newUser->insertIntoStudent($params);
+
         Router::redirect('register/login');
       }
     }
@@ -106,28 +110,60 @@ class RegisterController extends Controller
   {
     $validation = new Validate();
     $posted_values = ['fname' => '', 'lname' => '', 'email' => '', 'date_of_birth' => '', 'field' => '', 'contact' => '', 'skills' => '', 'profile_pic' => '', 'cv_name' => '', 'cv_data' => ''];
+    $u = currentUser();
+    foreach ($posted_values as $key => $value) {
+      $posted_values[$key] = $u->$key;
+      # code...
+    }
     if ($_POST) {
       $posted_values = posted_values($_POST);
       $validation->check($_POST, [
+        'email' => [
+          'display' => 'Email Field',
+          'validEmail' => true,
+          'required' => true
+        ],
         'fname' => [
-          'display' => 'First name',
+          'display' => 'First Name',
           'required' => true
         ],
         'lname' => [
-          'display' => 'Last name',
+          'display' => 'Last Name',
           'required' => true
         ],
-        'email' => [
-          'display' => 'Email Field',
-          'required' => true,
-          'unique' => 'users',
-          'max' => 150,
-          'validEmail' => true
+        'date_of_birth' => [
+          'display' => 'Date of Birth',
+          'required' => true
+        ],
+        'fname' => [
+          'display' => 'First Name',
+          'required' => true
+        ],
+        'field' => [
+          'display' => 'Field',
+          'required' => true
+        ],
+        'skills' => [
+          'display' => 'Skill',
+          'required' => true
+        ],
+        'contact' => [
+          'display' => 'Phone number',
+          'required' => true
         ]
+
       ]);
       
       if ($validation->passed()) {
-        currentUser()->editProfileStudent(currentUser()->id,$_POST);
+        $id = currentUser()->id;
+        $params = [];
+        foreach($_POST as $k => $v){
+          if($v!=''){
+            $params[$k] =$v;
+          }
+        }
+        
+        currentUser()->editProfileStudent($id,$params);
         Router::redirect('home/index');
       }
     }
