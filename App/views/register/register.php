@@ -3,6 +3,8 @@
 
 <?php $this->start('body') ?>
 <div class="col-md-6 col-md-offset-3 well">
+
+<h1>
   <form class="form" action="" method="post">
     <div class=""><?= $this->displayErrors ?>
     </div>

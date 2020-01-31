@@ -67,9 +67,10 @@ class JobsController extends Controller
     $this->view->post = $posted_values;
     $this->view->displayErrors = $validation->displayErrors();
 
-    $this->view->render('jobs/addJob');
+    $this->view->render('jobs/index');
     //(new Job())->apply(["company"=>"1","job"=>"5"]);
   }
+
   public function applicationAction(){
     $this->view->render('jobs/application');
   }
