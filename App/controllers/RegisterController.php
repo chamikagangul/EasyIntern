@@ -89,13 +89,21 @@ class RegisterController extends Controller
 
       if ($validation->passed()) {
         $newUser =  new Users();
-        $_POST['acl']='["LogedIn-'.$_POST['acl'].'"]';
+        $acl = $_POST['acl'];
+        $_POST['acl'] = '["LogedIn-' . $acl . '"]';
         $newUser->registerNewUser($_POST);
         $id = $newUser->findByUsername($_POST["username"])->id;
         $params["id"] = $id;
-        $params["fname"] = $_POST["fname"];
-        $params["email"] = $_POST["email"];
-        $newUser->insertIntoStudent($params);
+        if ($acl == "Student") {
+          $params["fname"] = $_POST["fname"];
+          $params["email"] = $_POST["email"];
+          $newUser->insertIntoStudent($params);
+        } else if ($acl == "Company") {
+          $params["name"] = $_POST["fname"];
+          $params["email"] = $_POST["email"];
+          $newUser->insertIntoCompany($params);
+        }
+
 
         Router::redirect('register/login');
       }
@@ -153,17 +161,17 @@ class RegisterController extends Controller
         ]
 
       ]);
-      
+
       if ($validation->passed()) {
         $id = currentUser()->id;
         $params = [];
-        foreach($_POST as $k => $v){
-          if($v!=''){
-            $params[$k] =$v;
+        foreach ($_POST as $k => $v) {
+          if ($v != '') {
+            $params[$k] = $v;
           }
         }
-        
-        currentUser()->editProfileStudent($id,$params);
+
+        currentUser()->editProfile($id, $params);
         Router::redirect('home/index');
       }
     }

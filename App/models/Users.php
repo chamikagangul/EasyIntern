@@ -115,6 +115,14 @@ class Users  extends Model
     return $this->_db->insert("student", $fields);
   }
 
+  public function insertIntoCompany($fields)
+  {
+    
+    if (empty($fields)) return false;
+
+    return $this->_db->insert("company", $fields);
+  }
+
   public function acls()
   {
     if (empty($this->acl)) return [];
@@ -124,7 +132,16 @@ class Users  extends Model
   public function userType()
   {
     //dnd(self::acls());
-    return self::acls();
+    return self::acls()[0];
+  }
+
+  public function editProfile($id, $fields){
+    //dnd($this->userType());
+    if($this->userType() == "LogedIn-Student"){
+      $this->editProfileStudent($id, $fields);
+    }else if($this->userType() == "LogedIn-Company"){
+      $this->editProfileCompany($id, $fields);
+    }
   }
 
   public function editProfileStudent($id, $fields)
@@ -132,6 +149,14 @@ class Users  extends Model
     $this->_db->update("student", $id, $fields);
     $f['fname'] = $fields['fname'];
     $f['lname'] = $fields['lname'];
+    $f['email'] = $fields['email'];
+    $this->_db->update("users", $id, $f);
+  }
+
+  public function editProfileCompany($id, $fields)
+  {
+    $this->_db->update("company", $id, $fields);
+    $f['name'] = $fields['name'];
     $f['email'] = $fields['email'];
     $this->_db->update("users", $id, $f);
   }

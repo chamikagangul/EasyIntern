@@ -41,11 +41,23 @@
             "Register": [
                 "register",
                 "login"
-                
             ]
         },
         "Register": [
-            "logout"
+            "logout",
+            "editprofilestudent"
+        ],
+        "Companies": [
+            "*"
+        ],
+        "Notification": [
+            "*"
+        ],
+        "Settings": [
+            "*"
+        ],
+        "Profile": [
+            "*"
         ],
         "Jobs": [
             "*"

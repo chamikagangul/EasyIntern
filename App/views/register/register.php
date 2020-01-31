@@ -43,9 +43,6 @@
     <div class='pull-right'>
       <input type="submit" value="Register" class='btn btn-primary btn-large'>
     </div>
-
-
-
   </form>
 </div>
 <?php $this->end() ?>
