@@ -10,7 +10,10 @@ class JobsController extends Controller
 
   public function indexAction()
   {
-    //dnd("2");
+    $this->addjobAction();
+  }
+
+  public function addjobAction(){
     $validation = new Validate();
     $posted_values = ['name' => '', 'skills' => '', 'vacancies' => '', 'salary' => '', 'job_details' => '', 'description' => ''];
     $u = currentUser();
@@ -63,10 +66,11 @@ class JobsController extends Controller
     }
     $this->view->post = $posted_values;
     $this->view->displayErrors = $validation->displayErrors();
-    $this->view->render('jobs/index');
+
+    $this->view->render('jobs/addJob');
+    //(new Job())->apply(["company"=>"1","job"=>"5"]);
   }
-  public function addjobAction(){
-    
-    (new Job())->apply(["company"=>"1","job"=>"5"]);
+  public function applicationAction(){
+    $this->view->render('jobs/application');
   }
 }
