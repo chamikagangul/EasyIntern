@@ -47,9 +47,6 @@
             "logout",
             "editprofile"
         ],
-        "Companies": [
-            "*"
-        ],
         "Notification": [
             "*"
         ],

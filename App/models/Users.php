@@ -158,4 +158,5 @@ class Users  extends Model
     $f['email'] = $fields['email'];
     $this->_db->update("users", $id, $f);
   }
+
 }
