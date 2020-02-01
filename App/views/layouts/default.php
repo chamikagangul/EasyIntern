@@ -21,6 +21,8 @@
     <title>Job Details</title>
 
     <script src="<?= PROOT ?>js/4n2NXumNjtg5LPp6VXLlDicTUfA.js"></script>
+  
+
     <link rel="apple-touch-icon" href="<?= PROOT ?>images/apple-touch-icon.html">
     <link rel="shortcut icon" type="image/ico" href="<?= PROOT ?>images/favicon.html" />
     <link rel="stylesheet" href="<?= PROOT ?>css/bootstrap.min.css">

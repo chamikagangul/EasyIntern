@@ -1,4 +1,4 @@
-<?php $u = currentUser(); ?>
+<?php $u = new Users($_POST['id']) ?>
 
 <?php $this->setSiteTitle("User Profile"); ?>
 
@@ -35,6 +35,7 @@
                         </ul>
                     </div>
                 </div>
+                <p><a href="<?=PROOT?>profile/downloadFile" class="btn btn-primary py-3 px-3">Download CV</a></p>
             </div>
         </div>
     </div>

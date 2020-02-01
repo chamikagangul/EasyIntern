@@ -52,7 +52,7 @@ class RegisterController extends Controller
   public function registerAction()
   {
     $validation = new Validate();
-    $posted_values = ['fname' => '',  'username' => '', 'email' => '', 'password' => '', 'confirm' => '','acl'=>''];
+    $posted_values = ['fname' => '',  'username' => '', 'email' => '', 'password' => '', 'confirm' => '', 'acl' => ''];
     if ($_POST) {
       $validation->check($_POST, [
         'fname' => [
@@ -90,10 +90,10 @@ class RegisterController extends Controller
         $newUser =  new Users();
         $acl = $_POST['acl'];
         $_POST['acl'] = '["LogedIn-' . $acl . '"]';
-        foreach($posted_values as $k=>$v){
+        foreach ($posted_values as $k => $v) {
           $posted_values[$k] = $_POST[$k];
         }
-        
+
         $newUser->registerNewUser($posted_values);
 
         $id = $newUser->findByUsername($_POST["username"])->id;
@@ -122,11 +122,13 @@ class RegisterController extends Controller
   {
     if (currentUser()->userType() == "LogedIn-Student") {
       $validation = new Validate();
-      $posted_values = ['fname' => '', 'lname' => '', 'email' => '', 'date_of_birth' => '', 'field' => '', 'contact' => '', 'skills' => '', 'profile_pic' => '', 'cv_name' => '', 'cv_data' => ''];
+      $posted_values = ['fname' => '', 'lname' => '', 'email' => '', 'date_of_birth' => '', 'field' => '', 'contact' => '', 'skills' => ''];
       $u = currentUser();
-      
+
+
+
       if ($_POST) {
-        
+
         $validation->check($_POST, [
           'email' => [
             'display' => 'Email Field',
@@ -164,12 +166,30 @@ class RegisterController extends Controller
 
         ]);
 
+
         if ($validation->passed()) {
           $id = currentUser()->id;
-          $params = [];
           foreach ($posted_values as $k => $v) {
-              $params[$k] = $_POST[$k];
+            $params[$k] = $_POST[$k];
           }
+
+          if (count($_FILES) > 0) {
+            if (is_uploaded_file($_FILES['cv_file']['tmp_name'])) {
+              $blob = file_get_contents($_FILES['cv_file']['tmp_name']);
+              $name = $_FILES['cv_file']['name'];
+              $params['cv_data'] = $blob;
+              $params['cv_name'] = $name;
+              dnc($name);
+            }
+            if (is_uploaded_file($_FILES['profile_pic']['tmp_name'])) {
+              $blob = file_get_contents($_FILES['profile_pic']['tmp_name']);
+              $name = $_FILES['profile_pic']['name'];
+              $params['profile_pic'] = $blob;
+              echo '<img src="data:image/jpeg;base64,' . base64_encode($blob) . '"/>';
+              dnc($name);
+            }
+          }
+
           currentUser()->editProfile($id, $params);
           Router::redirect('home/index');
         }
@@ -177,8 +197,7 @@ class RegisterController extends Controller
       $this->view->post = $posted_values;
       $this->view->displayErrors = $validation->displayErrors();
       $this->view->render('register/editProfileStudent');
-
-    }else if (currentUser()->userType() == "LogedIn-Company") {
+    } else if (currentUser()->userType() == "LogedIn-Company") {
       $validation = new Validate();
       $posted_values = ['name' => '', 'email' => '', 'address' => '', 'field' => '', 'contact' => '', 'details' => ''];
       $u = currentUser();
@@ -186,10 +205,10 @@ class RegisterController extends Controller
         $posted_values[$key] = $u->$key;
       }
       $post = $posted_values;
-      
+
       if ($_POST) {
-        
-        
+
+
         $validation->check($_POST, [
           'email' => [
             'display' => 'Email Field',
@@ -220,11 +239,11 @@ class RegisterController extends Controller
         ]);
 
         if ($validation->passed()) {
-          
+
           $id = currentUser()->id;
           $params = [];
-          foreach ($posted_values as $k => $v) {     
-              $posted_values[$k] = $_POST[$k];
+          foreach ($posted_values as $k => $v) {
+            $posted_values[$k] = $_POST[$k];
           }
 
           currentUser()->editProfile($id, $posted_values);
@@ -235,6 +254,5 @@ class RegisterController extends Controller
       $this->view->displayErrors = $validation->displayErrors();
       $this->view->render('register/editProfileCompany');
     }
-
   }
 }
