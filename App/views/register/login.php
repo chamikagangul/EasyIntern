@@ -63,7 +63,7 @@
                         </div>
 
                         <div>
-                            <a href="register/register" class="txt1">
+                            <a href="<?= PROOT ?>register/register" class="txt1">
 								Don't have an account??
 							</a>
                         </div>

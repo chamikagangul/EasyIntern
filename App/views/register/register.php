@@ -12,36 +12,48 @@
 <section id="post_job" class="Post_job_Signup">
     <div class="container" id="Containerr">
         <div class="job-post-box">
-        <div class=""><?= $this->displayErrors ?>
-            <form id="Form" method="post">
-                <div class="form-group">
-                    <label for="fname">Name</label>
-                    <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your Name" required /> </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="text" class="form-control" id="email" name="email" placeholder="Enter your Email Address" required /> </div>
-                <div class="form-group">
-                    <label for="username">User Name</label>
-                    <input type="text" class="form-control" id="username" name="username" placeholder="Enter your User Name" required /> </div>
-                <div class="form-group"> 
-                    <label for="password">Password</label> 
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password" required /> </div>
-                <div class="form-group">
-                     <label for="confirm">Confirm Password</label> 
-                     <input type="password" class="form-control" id="confirm" name="confirm" placeholder="Enter your Passworrd Again" required /> </div>
-                <div class="form-group"> <label>Student</label>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input " id="Student" name="acl" value="Student" required />
-                        <label class="form-check-label text-left" for="Student">Student</label> </div>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input " id="Company" name="acl" value="Company" required />
-                        <label class="form-check-label text-left" for="Company">Company</label> </div>
-                    <div class="form-check">
-                        <input type="radio" class="form-check-input " id="Admin" name="acl" value="Admin" required />
-                        <label class="form-check-label text-left" for="Admin">Admin</label> </div>
-                </div> <button type="submit" class="btn Post-Job-Offer">Register</button>
-            </form>
+            <div class=""><?= $this->displayErrors ?>
+                <form id="Form" method="post">
+                    <div class="form-group">
+                        <label for="fname">Name</label>
+                        <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your Name" required /> </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter your Email Address" required /> </div>
+                    <div class="form-group">
+                        <label for="username">User Name</label>
+                        <input type="text" class="form-control" id="username" name="username" placeholder="Enter your User Name" required /> </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password" required /> </div>
+                    <div class="form-group">
+                        <label for="confirm">Confirm Password</label>
+                        <input type="password" class="form-control" id="confirm" name="confirm" placeholder="Enter your Passworrd Again" required /> </div>
+                    <div class="form-group"> <label>Student</label>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input " id="Student" name="acl" value="Student" required />
+                            <label class="form-check-label text-left" for="Student">Student</label> </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input " id="Company" name="acl" value="Company" required />
+                            <label class="form-check-label text-left" for="Company">Company</label> </div>
+                        <div class="form-check">
+                            <input type="radio" class="form-check-input " id="Admin" name="acl" value="Admin" required />
+                            <label class="form-check-label text-left" for="Admin">Admin</label> </div>
+                    </div> 
+
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group"> <button type="submit" class="btn Post-Job-Offer">Register</button> </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="form-group"> <a href="<? PROOT ?>register/login"> 
+                            <button type="Button" class="btn Post-Job-Offer" style="position: absolute; right: 0;">Log In</button></a> </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
         </div>
-    </div>
 </section>
 <?php $this->end() ?>

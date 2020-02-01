@@ -13,7 +13,7 @@
                     <h2 class="font-color-white">Welcome To Company Account</h2>
                 </div>
                 <div class="container">
-                    <a href="#" class="btn btn-info btn-lg">
+                    <a href="<?=PROOT?>register/logout" class="btn btn-info btn-lg">
                         <span class="glyphicon glyphicon-log-out"></span> Log out
                     </a>
                 </div>
