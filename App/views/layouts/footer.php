@@ -1,71 +1,55 @@
-<div class="row">
-    <footer class="page-footer font-small stylish-color-dark pt-4">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <!------ Include the above in your HEAD tag ---------->
-        <!-- Footer Links -->
-        <div class="container text-center text-md-left">
-            <!-- Grid row -->
-            <div class="row">
-                <!-- Grid column -->
-                <div class="col-md-4 mx-auto">
-                    <!-- Content -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Footer Content</h5>
-                    <p>Here you can use rows and columns to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                </div> <!-- Grid column -->
-                <hr class="clearfix w-100 d-md-none"> <!-- Grid column -->
-                <div class="col-md-2 mx-auto">
-                    <!-- Links -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                    <ul class="list-unstyled">
-                        <li> <a href="#!">Link 1</a> </li>
-                        <li> <a href="#!">Link 2</a> </li>
-                        <li> <a href="#!">Link 3</a> </li>
-                        <li> <a href="#!">Link 4</a> </li>
-                    </ul>
-                </div> <!-- Grid column -->
-                <hr class="clearfix w-100 d-md-none"> <!-- Grid column -->
-                <div class="col-md-2 mx-auto">
-                    <!-- Links -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                    <ul class="list-unstyled">
-                        <li> <a href="#!">Link 1</a> </li>
-                        <li> <a href="#!">Link 2</a> </li>
-                        <li> <a href="#!">Link 3</a> </li>
-                        <li> <a href="#!">Link 4</a> </li>
-                    </ul>
-                </div> <!-- Grid column -->
-                <hr class="clearfix w-100 d-md-none"> <!-- Grid column -->
-                <div class="col-md-2 mx-auto">
-                    <!-- Links -->
-                    <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Links</h5>
-                    <ul class="list-unstyled">
-                        <li> <a href="#!">Link 1</a> </li>
-                        <li> <a href="#!">Link 2</a> </li>
-                        <li> <a href="#!">Link 3</a> </li>
-                        <li> <a href="#!">Link 4</a> </li>
-                    </ul>
-                </div> <!-- Grid column -->
-            </div> <!-- Grid row -->
-        </div> <!-- Footer Links -->
-        <hr> <!-- Call to action -->
-        <ul class="list-unstyled list-inline text-center py-2">
-            <li class="list-inline-item">
-                <h5 class="mb-1">Register for free</h5>
-            </li>
-            <li class="list-inline-item"> <a href="#!" class="btn btn-danger btn-rounded">Sign up!</a> </li>
-        </ul> <!-- Call to action -->
-        <hr> <!-- Social buttons -->
-        <ul class="list-unstyled list-inline text-center">
-            <li class="list-inline-item"> <a class="btn-floating btn-fb mx-1"> <i class="fab fa-facebook-f"> </i> </a> </li>
-            <li class="list-inline-item"> <a class="btn-floating btn-tw mx-1"> <i class="fab fa-twitter"> </i> </a> </li>
-            <li class="list-inline-item"> <a class="btn-floating btn-gplus mx-1"> <i class="fab fa-google-plus-g"> </i> </a> </li>
-            <li class="list-inline-item"> <a class="btn-floating btn-li mx-1"> <i class="fab fa-linkedin-in"> </i> </a> </li>
-            <li class="list-inline-item"> <a class="btn-floating btn-dribbble mx-1"> <i class="fab fa-dribbble"> </i> </a> </li>
-        </ul> <!-- Social buttons -->
-        <!-- Copyright -->
-        <div class="footer-copyright text-center py-3">© Copyright Easy Intern: <a href="https://mdbootstrap.com/education/bootstrap/">Click here</a> </div>
-    </footer>
-</div>
+
+<!-- Footer -->
+<section id="footer" >
+
+    <div class="container">
+        <div class="row text-center text-xs-center text-sm-left text-md-left">
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <!-- <h5 id="topics">Quick links</h5> -->
+                <ul class="list-unstyled quick-links">
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <!-- <h5>FAQ</h5> -->
+                <ul class="list-unstyled quick-links">
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Regiser</a></li>
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>contact Us</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-4">
+                <!-- <h5>About</h5> -->
+                <ul class="list-unstyled quick-links">
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>LogIn</a></li>
+                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Term & conditions</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                <ul class="list-unstyled list-inline social text-center">
+                    <li class="list-inline-item"><a href="https://www.facebook.com/Easy-Intern-110680963824391"><i
+                                class="fa fa-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="https://twitter.com/intern_easy"><i
+                                class="fa fa-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="https://www.instagram.com/easyintern7/"><i
+                                class="fa fa-instagram"></i></a></li>
+                    <!-- <li class="list-inline-item"><a href="easyintern7@gmail.com"><i class="fa fa-google-plus"></i></a></li> -->
+                    <li class="list-inline-item"><a href="www.easyintern7@gmail.com" target="_blank"><i
+                                class="fa fa-envelope"></i></a></li>
+                </ul>
+            </div>
+            </hr>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                <p><u><a href="#">Easy Intern</a></u> is a free online flatform to find jobs and candidate.</p>
+                <p class="h3">&copy All right Reversed.<a class="text-green ml-2" href="link here" target="_blank">Easy
+                        intern</a></p>
+            </div>
+            </hr>
+        </div>
+    </div>
+
+</section>

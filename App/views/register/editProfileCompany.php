@@ -11,22 +11,28 @@
         <div class="vertical-space-51"></div>
         <div class="container">
             <div class="job-post-box">
-                <form>
-                    <div class="form-group"> <label for="exampleInputJobtitle">Name</label> <input type="text" class="form-control" id="exampleInputJobtitle" placeholder="Enter Company Name" required /> </div>
+                <form method="post">
+                <div class=""><?= $this->displayErrors ?>
+                    <div class="form-group"> <label for="nae">Name</label> 
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter Company Name" value="<?= $this->post['name']?>" required /> </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
-                            <div class="form-group"> <label for="exampleInputCompany">Email Address</label> <input type="text" class="form-control" id="exampleInputCompany" placeholder="Company Email" required /> </div>
+                            <div class="form-group"> <label for="email">Email Address</label>
+                             <input type="email" class="form-control" id="email" name="email"placeholder="Company Email" value="<?= $this->post['email']?>" required /> </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <div class="form-group"> <label for="exampleInputLoction">Address</label> <input type="text" class="form-control" id="exampleInputLoction" placeholder="Company Address" required /> </div>
+                            <div class="form-group"> <label for="address">Address</label>
+                             <input type="text" class="form-control" id="address" name="address" placeholder="Company Address" value="<?= $this->post['address']?>" required /> </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
-                            <div class="form-group"> <label for="exampleInputCompany">Field</label> <input type="text" class="form-control" id="exampleInputCompany" placeholder="Field of the company" required /> </div>
+                            <div class="form-group"> <label for="field">Field</label> 
+                            <input type="text" class="form-control" id="field" name="field" placeholder="Field of the company" value="<?= $this->post['field']?>" required /> </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <div class="form-group"> <label for="exampleInputLoction">Contact Number</label> <input type="text" class="form-control" id="exampleInputLoction" placeholder="Company Contact Number" required /> </div>
+                            <div class="form-group"> <label for="contact">Contact Number</label> 
+                            <input type="text" class="form-control" id="contact" name="contact" placeholder="Company Contact Number" value="<?= $this->post['contact']?>" required /> </div>
                         </div>
                     </div>
                     <div class="row">
@@ -41,7 +47,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group"> <label for="exampleInputShortDescription">Details</label> <textarea class="form-control small" id="exampleInputShortDescription" placeholder="Write short description" rows="3" required></textarea> </div> <button type="submit" class="btn Post-Job-Offer">Update Info</button>
+                    <div class="form-group"> <label for="details">Details</label> 
+                    <textarea class="form-control small" id="details" name="details" placeholder="Write short description" rows="3" value="<?= $this->post['details']?>" required></textarea> </div> <button type="submit" class="btn Post-Job-Offer">Update Info</button>
                 </form>
             </div>
         </div>

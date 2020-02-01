@@ -21,7 +21,33 @@
         </div>
     </section>
 
- 
+    <div id="search-box">
+        <div class="container search-box">
+            <form action="#" id="search-box_search_form_3" class="search-box_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between ">
+                <div class="d-flex flex-row align-items-center justify-content-start inline-block">
+                    <span class="large material-icons search">search</span>
+                    <input class="search-box_search_input" placeholder="Search Keyword" required="required" type="search">
+                    <select class="dropdown_item_select search-box_search_input">
+                        <option>Field</option>
+                        <option>Electronic</option>
+                        <option>TeleCommunication</option>
+                        <option>Computer science</option>
+                        <option>Electrical</option>
+                        <option>civil</option>
+                        <option>Mechanical</option>
+                        <option>Material</option>
+                        <option>Chemical</option>
+                    </select>
+                    <select class="dropdown_item_select search-box_search_input">
+                        <option>Location</option>
+                        <option>Local</option>
+                        <option>Abroad</option>
+                    </select>
+                </div>
+                <button type="submit" class="search-box_search_button">Search Jobs</button>
+            </form>
+        </div>
+    </div>
 
     <section id="Job-Category">
         <div class="container">

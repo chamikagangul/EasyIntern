@@ -77,15 +77,20 @@
 
     <link rel="stylesheet" type="text/css" href="<?= PROOT ?>css/jquery-ui.min.css">
 
-   
+    <link href="<?= PROOT ?>css/footer.css" rel="stylesheet" id="bootstrap-css">
 
+    <link rel="stylesheet" href="<?= PROOT ?>css/custom_chamika.css">
 
 </head>
 
 <body class="background-color-white-drak ">
 <?php include 'main_menu.php'; ?>
+
+
 <?= $this->content('body'); ?>
 
+
+<?php include 'footer.php'; ?>
 </body>
 
 </html>

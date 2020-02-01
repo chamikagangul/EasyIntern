@@ -1,80 +1,141 @@
-<?php
-$menu = Router::getMenu('menu_acl');
-$currentPaage = currentPage();
-//dnd($menu); 
+<!DOCTYPE html>
+<html>
 
-?>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial
+    }
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navigation">
-  <a class="navbar-brand" href="<?= PROOT . 'home' ?>"><?= MENU_BRAND ?></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_menu" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+    .topnav {
+      overflow: hidden;
+      background-color: #333;
+    }
 
-  <div class="collapse navbar-collapse" id="main_menu">
-    <ul class="navbar-nav mr-auto">
+    .topnav a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
 
-      <?php foreach ($menu as $key => $val) :
-        $active = ''; ?>
-        <?php if ($key == "USERNAME") {
-          continue;
-        } ?>
-        <?php if (is_array($val)) : ?>
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <?= $key ?>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+    .active {
+      background-color: rgb(59, 93, 245);
+      color: white;
+    }
 
-              <?php foreach ($val as $k => $v) :
-                $active = ($v == $currentPaage) ? "active" : "";   ?>
+    .topnav .icon {
+      display: none;
+    }
 
-                <?php if ($k == "seperator") : ?>
+    .dropdown {
+      float: left;
+      overflow: hidden;
+    }
 
-                  <div class="dropdown-divider"></div>
-                <?php else : ?>
-                  <a class="dropdown-item <?= $active ?>" href="<?= $v ?>"><?= $k ?></a>
-                <?php endif; ?>
-              <?php endforeach; ?>
-            </div>
-          </li>
-        <?php else :
-          $active = ($val == $currentPaage) ? "active" : "";  ?>
+    .dropdown .dropbtn {
+      font-size: 17px;
+      border: none;
+      outline: none;
+      color: white;
+      padding: 14px 16px;
+      background-color: inherit;
+      font-family: inherit;
+      margin: 0;
+    }
 
-          <a class="dropdown-item <?= $active ?>" href="<?= $val ?>"><?= $key ?></a>
-        <?php endif; ?>
+    .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 999;
+    }
 
-      <?php endforeach; ?>
+    .dropdown-content a {
+      float: none;
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+      text-align: left;
+    }
 
+    .topnav a:hover,
+    .dropdown:hover .dropbtn {
+      background-color: #555;
+      color: white;
+    }
 
+    .dropdown-content a:hover {
+      background-color: #ddd;
+      color: black;
+    }
 
-      <li class="nav-item active">
-    </ul>
-    <ul>
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
 
-      <?php
-      $val = $menu["USERNAME"];
-      $key = (currentUser()) ? ucfirst(currentUser()->fname) : "Guest";
-      ?>
-      <div class="nav navbar-bar navbar-right mr-5">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <?= $key ?>
-          </a>
-          <div class="dropdown-menu mr-" aria-labelledby="navbarDropdown">
+    @media screen and (max-width: 600px) {
 
-            <?php foreach ($val as $k => $v) :
-              $active = ($v == $currentPaage) ? "active" : "";   ?>
+      .topnav a:not(:first-child),
+      .dropdown .dropbtn {
+        display: none;
+      }
 
-              <?php if ($k == "seperator") : ?>
+      .topnav a.icon {
+        float: right;
+        display: block;
+      }
+    }
 
-                <div class="dropdown-divider"></div>
-              <?php else : ?>
-                <a class="dropdown-item <?= $active ?>" href="<?= $v ?>"><?= $k ?></a>
-              <?php endif; ?>
-            <?php endforeach; ?>
-          </div>
-      </div>
-    </ul>
+    @media screen and (max-width: 600px) {
+      .topnav.responsive {
+        position: relative;
+      }
+
+      .topnav.responsive .icon {
+        position: absolute;
+        right: 0;
+        top: 0;
+      }
+
+      .topnav.responsive a {
+        float: none;
+        display: block;
+        text-align: left;
+      }
+
+      .topnav.responsive .dropdown {
+        float: none;
+      }
+
+      .topnav.responsive .dropdown-content {
+        position: relative;
+      }
+
+      .topnav.responsive .dropdown .dropbtn {
+        display: block;
+        width: 100%;
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topnav" id="myTopnav"> <a href="#home" class="active">Home</a> <a href="#news">News</a> <a href="#contact">Contact</a>
+    <div class="dropdown"> <button class="dropbtn">Dropdown <i class="fa fa-caret-down"></i> </button>
+      <div class="dropdown-content"> <a href="#">Link 1</a> <a href="#">Link 2</a> <a href="#">Link 3</a> </div>
+    </div> <a href="#about">About</a> <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
   </div>
-</nav>
+</body>
+
+</html>

@@ -185,8 +185,11 @@ class RegisterController extends Controller
       foreach ($posted_values as $key => $value) {
         $posted_values[$key] = $u->$key;
       }
+      $post = $posted_values;
+      
       if ($_POST) {
-        $posted_values = posted_values($_POST);
+        
+        
         $validation->check($_POST, [
           'email' => [
             'display' => 'Email Field',
@@ -220,14 +223,12 @@ class RegisterController extends Controller
           
           $id = currentUser()->id;
           $params = [];
-          foreach ($_POST as $k => $v) {
-            if ($v != '') {
-              $params[$k] = $v;
-            }
+          foreach ($posted_values as $k => $v) {     
+              $posted_values[$k] = $_POST[$k];
           }
 
-          currentUser()->editProfile($id, $params);
-          Router::redirect('home/index');
+          currentUser()->editProfile($id, $posted_values);
+          Router::redirect('');
         }
       }
       $this->view->post = $posted_values;

@@ -19,11 +19,11 @@
                             <h2 class="mb-4">About Company</h2>
                             <p>This is an Introduction about Company</p>
                             <ul class="about-info mt-4 px-md-0 px-2">
-                                <li class="d-flex"><span>Name:</span> <span>Vega Innovations</span></li>
-                                <li class="d-flex"><span>Address:</span> <span>No 457, Union Place, Colombo</span></li>
-                                <li class="d-flex"><span>Field:</span> <span>Mechanical Engineearing</span></li>
-                                <li class="d-flex"><span>Email:</span> <span>abcdefghijkl@gmail.com</span></li>
-                                <li class="d-flex"><span>Phone: </span> <span>+941132659</span></li>
+                                <li class="d-flex"><span>Name:</span> <span><?= $u->name ?></span></li>
+                                <li class="d-flex"><span>Address:</span> <span><?= $u->address ?></span></li>
+                                <li class="d-flex"><span>Field:</span> <span><?= $u->field ?></span></li>
+                                <li class="d-flex"><span>Email:</span> <span><?= $u->email ?></span></li>
+                                <li class="d-flex"><span>Phone: </span> <span><?= $u->contact ?></span></li>
                             </ul>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
             <div class="row justify-content-center mb-5 pb-3">
                 <div class="col-md-7 heading-section text-center ftco-animate">
                     <h2 class="mb-4">Vega Innovations</h2>
-                    <p>Advance traction control inverters for electric vehicle applications, using patent pending technology for lightweight, high power density requirements. Capable of 350kW peak power, operating up to 900V and 600A. Liquid cooled with pin-fin structure baseplate proprietary technology, reducing costs and enhancing lifetime of the solid state devices. Expertise in engineering custom motor controller for high performance EVs to 2 wheelers.</p>
+                    <p><?= $u->details ?></p>
                 </div>
             </div>
         </div>

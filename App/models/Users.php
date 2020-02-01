@@ -122,14 +122,15 @@ class Users  extends Model
 
   public function acls()
   {
-    if (empty($this->acl)) return [];
+    if (empty($this->acl)) return ["Guest"];
     return json_decode(htmlspecialchars_decode($this->acl, ENT_QUOTES), true);
   }
 
   public function userType()
   {
     //dnd(self::acls());
-    return self::acls()[0];
+    $a = self::acls();
+    return end($a);
   }
 
   public function editProfile($id, $fields){
@@ -156,6 +157,20 @@ class Users  extends Model
     $f['name'] = $fields['name'];
     $f['email'] = $fields['email'];
     $this->_db->update("users", $id, $f);
+  }
+
+  public function loadJobs(){
+    
+    $data = $this->_db->find("job");
+    return $data;
+  
+  }
+
+  public function loadCompanies(){
+    
+    $data = $this->_db->find("company");
+    return $data;
+  
   }
 
 }

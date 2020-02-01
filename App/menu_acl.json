@@ -1,8 +1,8 @@
 {
     "Home": "Home",
     "Companies": "companies",
-    "Notification": "notification",
     "Add Jobs": "jobs",
+    "Notification": "notification",
     "USERNAME": {
         "Login": "register/login",
         "Register": "register/register",

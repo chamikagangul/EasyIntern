@@ -10,7 +10,13 @@ class RestrictedController extends Controller
   public function indexAction()
   {
     if (currentUser()) {
-      Router::redirect('home/index');
+      if (currentUser()->userType() == "LogedIn-Student") {
+        $this->view->render("home/student");
+      } else if (currentUser()->userType() == "LogedIn-Company") {
+        $this->view->render("home/company");
+      } else {
+        Router::redirect('register/login');
+      }
     }else{
       Router::redirect('register/login');
     }

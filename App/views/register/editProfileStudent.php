@@ -15,6 +15,7 @@
     <div class="container">
         <div class="job-post-box">
             <form method="post">
+            <div class=""><?= $this->displayErrors ?>
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="form-group"> <label for="fname">First Name</label>

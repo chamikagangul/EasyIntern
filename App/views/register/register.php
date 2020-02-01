@@ -47,7 +47,7 @@
                             <div class="form-group"> <button type="submit" class="btn Post-Job-Offer">Register</button> </div>
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <div class="form-group"> <a href="<? PROOT ?>register/login"> 
+                            <div class="form-group"> <a href="<?= PROOT ?>register/login"> 
                             <button type="Button" class="btn Post-Job-Offer" style="position: absolute; right: 0;">Log In</button></a> </div>
                         </div>
                     </div>
