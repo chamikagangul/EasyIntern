@@ -18,8 +18,7 @@
         }
     </style>
 
-    <title>Job Details</title>
-
+   
     <script src="<?= PROOT ?>js/4n2NXumNjtg5LPp6VXLlDicTUfA.js"></script>
     <link rel="apple-touch-icon" href="<?= PROOT ?>images/apple-touch-icon.html">
     <link rel="shortcut icon" type="image/ico" href="<?= PROOT ?>images/favicon.html" />
@@ -61,13 +60,13 @@
     <link href="<?= PROOT ?>css/matrialize.css" rel="stylesheet">
 
     <link href="<?= PROOT ?>owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    
-    
+
+
     <link rel="apple-touch-icon" href="<?= PROOT ?>images/apple-touch-icon.html">
     <link rel="shortcut icon" type="image/ico" href="<?= PROOT ?>images/favicon.html" />
 
     <link rel="stylesheet" href="<?= PROOT ?>css/bootstrap.min.css">
-    
+
 
     <link href="<?= PROOT ?>font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -77,14 +76,15 @@
 
     <link rel="stylesheet" type="text/css" href="<?= PROOT ?>css/jquery-ui.min.css">
 
-   
+    <link rel="stylesheet" href="<?= PROOT ?>css/custom_chamika.css">
+
 
 
 </head>
 
 <body class="background-color-white-drak ">
-<?php include 'main_menu.php'; ?>
-<?= $this->content('body'); ?>
+
+    <?= $this->content('body'); ?>
 
 </body>
 

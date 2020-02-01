@@ -1,3 +1,5 @@
+<?php $this->setLayout("empty"); ?>
+
 <?php $this->start('head') ?>
 <?php $this->end() ?>
 

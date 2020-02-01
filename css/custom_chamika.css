@@ -1,3 +1,4 @@
+@@ -1,63 +0,0 @@
 .red {
     color: red;
 }
@@ -56,8 +57,10 @@ body {
     transition: box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-#navigation{
-    position: fixed;
-    top: 0px;
-    
-}
+.Post_job_Signup { 
+    padding-top: 5vw; 
+} 
+.intro_Signup {
+     position: fixed; 
+     z-index: -1; 
+    }
