@@ -63,7 +63,7 @@ class RegisterController extends Controller
           'display' => 'Username',
           'required' => true,
           'unique' => 'users',
-          'min' => 6,
+          'min' => 5,
           'max' => 150
         ],
         'email' => [
@@ -76,12 +76,12 @@ class RegisterController extends Controller
         'password' => [
           'display' => 'Password',
           'required' => true,
-          'min' => 6
+          'min' => 5
         ],
         'confirm' => [
           'display' => 'Confirm Password',
           'required' => true,
-          'min' => 6,
+          'min' => 5,
           'matches' => 'password'
         ]
       ]);
@@ -93,7 +93,7 @@ class RegisterController extends Controller
         foreach ($posted_values as $k => $v) {
           $posted_values[$k] = $_POST[$k];
         }
-
+        //dnd($newUser);
         $newUser->registerNewUser($posted_values);
 
         $id = $newUser->findByUsername($_POST["username"])->id;

@@ -2,6 +2,7 @@
 
 function dangerCard($error)
 {
+    $html='';
 /*
     $html = <<< EOT
      <div class="card border-danger mb-3 " style="width:auto" id="waring">
@@ -21,7 +22,7 @@ function dangerCard($error)
 </div>
 EOT;
     return $html;
-    */
+    
     $html = <<< EOT
     <div class="row"> <div class="alert alert-danger"> <strong>Warning!</strong> 
     EOT;
@@ -37,7 +38,7 @@ EOT;
     </div>
     </div> 
     EOT;
-
+*/
     
 return $html;
 }

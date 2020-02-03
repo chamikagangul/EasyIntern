@@ -62,7 +62,7 @@ class Router
         $current_user_acls[] = $a;
       }
     }
-   
+    //dnd($current_user_acls);
     foreach ($current_user_acls as $level) {
       if (array_key_exists($level, $acl) && array_key_exists($controller_name, $acl[$level])) {
         if (in_array($action_name, $acl[$level][$controller_name]) || in_array('*', $acl[$level][$controller_name])) {

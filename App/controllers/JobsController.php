@@ -62,7 +62,7 @@ class JobsController extends Controller
           $posted_values["company"] = currentUser()->id;
           $job = new Job();
           $job->addJob($posted_values);
-          Router::redirect('home/index');
+          Router::redirect('');
         }
       }
     }
@@ -74,6 +74,9 @@ class JobsController extends Controller
   }
 
   public function applicationAction(){
+    $student = new Users($_POST['id']);
+
+
     $this->view->render('jobs/application');
   }
 }

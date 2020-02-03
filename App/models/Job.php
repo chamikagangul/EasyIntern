@@ -18,7 +18,7 @@ class Job  extends Model
   }
   public function apply($params){
     
-    if(currentUser()->userType()=="LogedIn-Company"){
+    if(currentUser()->userType()=="LogedIn-Student"){
       $userId = currentUser()->id;
       $companyId =$params["company"];
       $jobId=$params["job"];
