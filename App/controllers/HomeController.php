@@ -15,7 +15,10 @@ class HomeController extends Controller
         $this->view->render("home/student");
       } else if (currentUser()->userType() == "LogedIn-Company") {
         $this->view->render("home/company");
+      }else if (currentUser()->userType() == "LogedIn-Admin") {
+        $this->view->render("home/admin");
       }
+
     }else{
       $this->view->render("register/login");
     }

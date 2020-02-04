@@ -30,6 +30,10 @@ class Users  extends Model
 
           $u2 = $this->_db->findFirst('company', ['conditions' => 'id=?', 'bind' => [$user]]);
         }
+        if ($this->userType() == "LogedIn-Admin") {
+
+          $u2 = $this->_db->findFirst('company', ['conditions' => 'id=?', 'bind' => [$user]]);
+        }
         foreach ($u as $key => $value) {
           $this->$key = $value;
         }

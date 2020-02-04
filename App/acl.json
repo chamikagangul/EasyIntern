@@ -72,10 +72,29 @@
             "Register": [
                 "register",
                 "login"
+            ],
+            "Jobs": [
+                "addjob"
             ]
         },
+        "Home": [
+            "*"
+        ],
         "Register": [
-            "logout"
+            "logout",
+            "editprofile"
+        ],
+        "Notification": [
+            "*"
+        ],
+        "Companies": [
+            "*"
+        ],
+        "Settings": [
+            "*"
+        ],
+        "Profile": [
+            "*"
         ]
     }
 }
