@@ -7,6 +7,18 @@
 <?php $this->end() ?>
 <?php $this->start('body') ?>
 
+<script>
+
+$(function() {
+        $('#btnSearch').click(function() {
+            searchJob();
+        });
+        $('#searchTag').change(function() {
+            searchJob();
+        });
+    });
+</script>
+
 <section id="intro">
     <div class="carousel-item active">
         <div class="carousel-background"><img src="images/slider1.jpg" alt=""></div>
@@ -59,7 +71,7 @@
         </p>
         <div class="vertical-space-60"> </div>
 
-        <div class="row" id="jobContainer">
+        <div class="row" id="JobContainer">
 
 
             <?php foreach ($jobs as $key => $job) : 
