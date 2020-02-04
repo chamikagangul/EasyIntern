@@ -9,6 +9,7 @@ class RegisterController extends Controller
   }
   public function loginAction()
   {
+    
     $validation = new Validate();
     if ($_POST) {
       //form Invalid
@@ -24,6 +25,7 @@ class RegisterController extends Controller
         ]
       ]);
       if ($validation->passed()) {
+        new Users();
         $user = $this->UsersModel->findByUsername($_POST['username']);
         //dnd(password_hash("pass",PASSWORD_DEFAULT));
 
