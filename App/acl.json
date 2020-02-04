@@ -38,6 +38,9 @@
         ],
         "Jobs": [
             "application"
+        ],
+        "Search":[
+            "*"
         ]
     },
     "LogedIn-Company": {

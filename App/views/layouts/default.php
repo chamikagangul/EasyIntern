@@ -18,9 +18,12 @@
         }
     </style>
 
-    <title>Job Details</title>
+    <title>easy Intern</title>
+
+    
 
     <script src="<?= PROOT ?>js/4n2NXumNjtg5LPp6VXLlDicTUfA.js"></script>
+    <script src="<?= PROOT ?>js/jquery.min.js"></script>
   
 
     <link rel="apple-touch-icon" href="<?= PROOT ?>images/apple-touch-icon.html">
@@ -82,6 +85,8 @@
     <link href="<?= PROOT ?>css/footer.css" rel="stylesheet" id="bootstrap-css">
 
     <link rel="stylesheet" href="<?= PROOT ?>css/custom_chamika.css">
+
+    <script src="<?= PROOT ?>js/custom_chamika.js"></script>
 
 </head>
 

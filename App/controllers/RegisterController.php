@@ -11,8 +11,10 @@ class RegisterController extends Controller
   {
     
     $validation = new Validate();
+    
     if ($_POST) {
       //form Invalid
+      
       $validation->check($_POST, [
         'username' => [
           'display' => 'Username',
@@ -24,11 +26,12 @@ class RegisterController extends Controller
           'min' => 6
         ]
       ]);
+      
       if ($validation->passed()) {
         new Users();
         $user = $this->UsersModel->findByUsername($_POST['username']);
         //dnd(password_hash("pass",PASSWORD_DEFAULT));
-
+        
         if ($user && password_verify(Input::get('password'), $user->password)) {
           $remember = (isset($_POST["remember_me"]) && Input::get('remember_me')) ? true : false;
           $user->login($remember);
@@ -174,21 +177,20 @@ class RegisterController extends Controller
           foreach ($posted_values as $k => $v) {
             $params[$k] = $_POST[$k];
           }
-
+      
           if (count($_FILES) > 0) {
             if (is_uploaded_file($_FILES['cv_file']['tmp_name'])) {
               $blob = file_get_contents($_FILES['cv_file']['tmp_name']);
               $name = $_FILES['cv_file']['name'];
               $params['cv_data'] = $blob;
               $params['cv_name'] = $name;
-              dnc($name);
+
             }
             if (is_uploaded_file($_FILES['profile_pic']['tmp_name'])) {
               $blob = file_get_contents($_FILES['profile_pic']['tmp_name']);
               $name = $_FILES['profile_pic']['name'];
               $params['profile_pic'] = $blob;
-              echo '<img src="data:image/jpeg;base64,' . base64_encode($blob) . '"/>';
-              dnc($name);
+              
             }
           }
 
@@ -210,7 +212,7 @@ class RegisterController extends Controller
 
       if ($_POST) {
 
-
+        //dnd($_FILES);
         $validation->check($_POST, [
           'email' => [
             'display' => 'Email Field',
@@ -245,10 +247,17 @@ class RegisterController extends Controller
           $id = currentUser()->id;
           $params = [];
           foreach ($posted_values as $k => $v) {
-            $posted_values[$k] = $_POST[$k];
+            $params[$k] = $_POST[$k];
           }
-
-          currentUser()->editProfile($id, $posted_values);
+          
+          if (count($_FILES) > 0) {
+            if (is_uploaded_file($_FILES['logo']['tmp_name'])) {
+              $blob = file_get_contents($_FILES['logo']['tmp_name']);
+              $params['logo'] = $blob;
+            }
+          }
+          
+          currentUser()->editProfile($id, $params);
           Router::redirect('');
         }
       }

@@ -11,14 +11,14 @@ class RestrictedController extends Controller
   {
     if (currentUser()) {
       if (currentUser()->userType() == "LogedIn-Student") {
-        $this->view->render("home/student");
+        Router::redirect('');
       } else if (currentUser()->userType() == "LogedIn-Company") {
-        $this->view->render("home/company");
+        Router::redirect('');
       } else {
-        $this->view->render("register/login");
+        Router::redirect('');
       }
     }else{
-      $this->view->render("register/login");
+      Router::redirect("register/login");
     }
   }
 }

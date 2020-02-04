@@ -25,10 +25,9 @@
 
 <div id="search-box">
     <div class="container search-box">
-        <form action="#" id="search-box_search_form_3" class="search-box_search_form d-flex flex-lg-row flex-column align-items-center justify-content-between ">
-            <div class="d-flex flex-row align-items-center justify-content-start inline-block">
-                <span class="large material-icons search">search</span>
-                <input class="search-box_search_input" placeholder="Search Keyword" required="required" type="search">
+           <div class="d-flex flex-row align-items-center justify-content-start inline-block">
+                
+                <input class="search-box_search_input" placeholder="Search Keyword" required="required" type="search" id="searchTag">
                 <select class="dropdown_item_select search-box_search_input">
                     <option>Field</option>
                     <option>Electronic</option>
@@ -46,8 +45,8 @@
                     <option>Abroad</option>
                 </select>
             </div>
-            <button type="submit" class="search-box_search_button">Search Jobs</button>
-        </form>
+            <button id='btnSearch' class="search-box_search_button">Search Job</button>
+     
     </div>
 </div>
 
@@ -60,7 +59,7 @@
         </p>
         <div class="vertical-space-60"> </div>
 
-        <div class="row">
+        <div class="row" id="jobContainer">
 
 
             <?php foreach ($jobs as $key => $job) : 

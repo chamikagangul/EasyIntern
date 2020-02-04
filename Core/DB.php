@@ -162,6 +162,19 @@ class DB{
 public function error(){
   return $this->_error;
 }
-
+public function search($table,$tag){
+  $condition = 'false';
+  //dnd(json_decode($this->get_columns($table)));
+  foreach($this->get_columns($table) as $col){
+    //dnc($col->Field);
+    $condition.= " OR $col->Field LIKE '%{$tag}%'";
+  }
+  $sql = "SELECT * FROM $table WHERE ($condition)"; 
+  //dnd($sql);
+  if(!$this->query($sql)->_error){
+    return $this->results();
+  }
+  return false;
+}
 
 }
