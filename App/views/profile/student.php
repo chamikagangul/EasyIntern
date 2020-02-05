@@ -1,4 +1,9 @@
-<?php $u = currentUser(); ?>
+<?php $u = new Users((int)currentUser()->target); 
+
+if($u->userType()!="LogedIn-Student"){
+    Router::redirect('');
+}
+?>
 
 <?php $this->setSiteTitle("User Profile"); ?>
 
@@ -54,18 +59,18 @@
 </section>
 
 
-<script src="js/jquery.min.js"></script>
-<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="<?=PROOT?>js/jquery.min.js"></script>
+<script src="<?=PROOT?>js/jquery-migrate-3.0.1.min.js"></script>
 
-<script src="js/jquery.waypoints.min.js"></script>
-<script src="js/jquery.stellar.min.js"></script>
-<script src="js/owl.carousel.min.js"></script>
+<script src="<?=PROOT?>js/jquery.waypoints.min.js"></script>
+<script src="<?=PROOT?>js/jquery.stellar.min.js"></script>
+<script src="<?=PROOT?>js/owl.carousel.min.js"></script>
 
-<script src="js/aos.js"></script>
-<script src="js/jquery.animateNumber.min.js"></script>
-<script src="js/scrollax.min.js"></script>
+<script src="<?=PROOT?>js/aos.js"></script>
+<script src="<?=PROOT?>js/jquery.animateNumber.min.js"></script>
+<script src="<?=PROOT?>js/scrollax.min.js"></script>
 
-<script src="js/main.js"></script>
+<script src="<?=PROOT?>js/main.js"></script>
 
 
 <?php $this->end() ?>

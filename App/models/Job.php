@@ -4,7 +4,7 @@ class Job  extends Model
 {
   private $_isLoggedIn, $_sessionName, $_cookieName;
   public static $currentLoggedUser = null;
-  public function __construct($job)
+  public function __construct($job='')
   {
     $table = "job";
     parent::__construct($table);

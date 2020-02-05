@@ -17,6 +17,11 @@ class ProfileController extends Controller
       $this->view->render("profile/company");
     }
   }
+  public function studentAction()
+  {
+      $this->view->render("profile/student");
+  }
+
 
   public function downloadFileAction()
   {

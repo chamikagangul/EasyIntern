@@ -18,11 +18,16 @@ class Router
     array_shift($url);
 
     //target
-    $target = (isset($url[0]) && $url[0] != "") ? $url[0] : '';
+    if(isset(currentUser()->id)){
+    $target = (isset($url[0]) && $url[0] != "") ? $url[0] :currentUser()->id;
+    }else{
+      $target ='';
+    }
+
     array_shift($url);
-
+    if(!empty($target)){
     currentUser()->target = $target;
-
+    }
     //acl check
     $grantAccess = self::hasAccess($controller_name, $action_name);
     if (!$grantAccess) {
@@ -45,10 +50,13 @@ class Router
 
   public static function redirect($location)
   {
+
+    
     if (!headers_sent()) {
       header('Location:' . PROOT . $location);
       exit();
     } else {
+      
       echo "<script type='text/javascript'>
          window.location.href=" . PROOT . $location . " </script>
          <noscript>

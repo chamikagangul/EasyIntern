@@ -13,11 +13,12 @@ class JobsController extends Controller
     $this->addjobAction();
   }
 
-  public function addjobAction(){
+  public function addjobAction()
+  {
     $validation = new Validate();
     $posted_values = ['name' => '', 'skills' => '', 'vacancies' => '', 'salary' => '', 'job_details' => '', 'description' => ''];
     $u = currentUser();
-    
+
     if ($_POST) {
 
       $validation->check($_POST, [
@@ -51,14 +52,13 @@ class JobsController extends Controller
       if ($validation->passed()) {
         $id = currentUser()->id;
         $params = [];
-        
+
         if (currentUser()->userType() == "LogedIn-Company") {
           foreach ($posted_values as $key => $value) {
             $posted_values[$key] = $_POST[$key];
-    
           }
 
-          
+
           $posted_values["company"] = currentUser()->id;
           $job = new Job();
           $job->addJob($posted_values);
@@ -73,7 +73,21 @@ class JobsController extends Controller
     //(new Job())->apply(["company"=>"1","job"=>"5"]);
   }
 
-  public function applicationAction(){
+  public function applicationAction()
+  {
+    $jobId = currentUser()->target;
+    $job = new Job((int) $jobId);
+
+    $params = [];
+    if (!empty($_POST['description'])) {
+      $params['job_id'] = currentUser()->target;
+      $params['company_id'] = $job->company;
+      $params['student_id'] = currentUser()->id;
+      $params['description'] = $_POST['description'];
+      (new Applic())->saveApplication($params);
+
+      Router::redirect('');
+    }
     $this->view->render('jobs/application');
   }
 }

@@ -8,8 +8,8 @@
 <?php $this->start('body') ?>
 
 <script>
-
-$(function() {
+    $(function() {
+        searchJob();
         $('#btnSearch').click(function() {
             searchJob();
         });
@@ -37,28 +37,28 @@ $(function() {
 
 <div id="search-box">
     <div class="container search-box">
-           <div class="d-flex flex-row align-items-center justify-content-start inline-block">
-                
-                <input class="search-box_search_input" placeholder="Search Keyword" required="required" type="search" id="searchTag">
-                <select class="dropdown_item_select search-box_search_input">
-                    <option>Field</option>
-                    <option>Electronic</option>
-                    <option>TeleCommunication</option>
-                    <option>Computer science</option>
-                    <option>Electrical</option>
-                    <option>civil</option>
-                    <option>Mechanical</option>
-                    <option>Material</option>
-                    <option>Chemical</option>
-                </select>
-                <select class="dropdown_item_select search-box_search_input">
-                    <option>Location</option>
-                    <option>Local</option>
-                    <option>Abroad</option>
-                </select>
-            </div>
-            <button id='btnSearch' class="search-box_search_button">Search Job</button>
-     
+        <div class="d-flex flex-row align-items-center justify-content-start inline-block">
+
+            <input class="search-box_search_input" placeholder="Search Keyword" required="required" type="search" id="searchTag">
+            <select class="dropdown_item_select search-box_search_input">
+                <option>Field</option>
+                <option>Electronic</option>
+                <option>TeleCommunication</option>
+                <option>Computer science</option>
+                <option>Electrical</option>
+                <option>civil</option>
+                <option>Mechanical</option>
+                <option>Material</option>
+                <option>Chemical</option>
+            </select>
+            <select class="dropdown_item_select search-box_search_input">
+                <option>Location</option>
+                <option>Local</option>
+                <option>Abroad</option>
+            </select>
+        </div>
+        <button id='btnSearch' class="search-box_search_button">Search Job</button>
+
     </div>
 </div>
 
@@ -73,24 +73,6 @@ $(function() {
 
         <div class="row" id="JobContainer">
 
-
-            <?php foreach ($jobs as $key => $job) : 
-            $data=[];
-                foreach ($job as $k => $v) {
-                    $data[$k] = $v;
-                }
-                ?>
-                <div class="col-lg-3 col-md-6 max-width-50">
-                    <div class="box background-color-white-light">
-                        <div class="circle">
-                            <img src="images/Electronics.jpg" style="width:120px;height:120px;" alt="">
-                        </div>
-                        <h6><?=$data['name']; ?></h6>
-                        <a href="jobs/application" class="button job_post" data-hover="View Jobs"><span>Apply</span></a>
-                    </div>
-                </div>
-
-            <?php endforeach; ?>
 
         </div>
     </div>

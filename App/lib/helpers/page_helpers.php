@@ -60,3 +60,8 @@ EOT;
 
     return $html;
 }
+
+function alert(){
+    $html = "<script> alert('done') </script>";
+    return $html;
+}
