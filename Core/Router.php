@@ -4,8 +4,10 @@ class Router
 {
   public static function route($url)
   {
+    
 
     //controller
+
     $controller = (isset($url[0]) && $url[0] != "") ? ucwords($url[0]) . "Controller" : DEFULT_CONTROLLER."Controller";
     $controller_name = str_replace("Controller","",$controller);
     array_shift($url);
@@ -14,6 +16,12 @@ class Router
     $action = (isset($url[0]) && $url[0] != "") ? $url[0] . 'Action' : 'indexAction';
     $action_name = (isset($url[0]) && $url[0] != "") ? $url[0] : 'index';;
     array_shift($url);
+
+    //target
+    $target = (isset($url[0]) && $url[0] != "") ? $url[0] : '';
+    array_shift($url);
+
+    currentUser()->target = $target;
 
     //acl check
     $grantAccess = self::hasAccess($controller_name, $action_name);
@@ -32,6 +40,7 @@ class Router
     } else {
       die('that method is not exist: ' . $controller_name);
     }
+
   }
 
   public static function redirect($location)

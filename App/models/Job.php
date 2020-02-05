@@ -4,12 +4,23 @@ class Job  extends Model
 {
   private $_isLoggedIn, $_sessionName, $_cookieName;
   public static $currentLoggedUser = null;
-  public function __construct()
+  public function __construct($job)
   {
     $table = "job";
     parent::__construct($table);
     $this->_softDelete = true;
+    if ($job != '') {
+      $j = $this->_db->findFirst('job', ['conditions' => 'id=?', 'bind' => [$job]]);
+            
+      if ($j) {
+        foreach ($j as $key => $value) {
+          $this->$key = $value;
+        }
+      }    
+    }
   }
+
+
 
   public function addJob($fields)
   {

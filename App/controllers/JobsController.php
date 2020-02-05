@@ -74,9 +74,6 @@ class JobsController extends Controller
   }
 
   public function applicationAction(){
-    $student = new Users($_POST['id']);
-
-
     $this->view->render('jobs/application');
   }
 }

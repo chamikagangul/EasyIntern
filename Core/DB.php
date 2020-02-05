@@ -1,180 +1,197 @@
 <?php
 
-class DB{
+class DB
+{
   private static $_instance = null;
-  private $_pdo,$_error = false,$_result,$_count = 0 , $_lastInsertID =null;
+  private $_pdo, $_error = false, $_result, $_count = 0, $_lastInsertID = null;
 
-  private function __construct(){
-    try{
-      $this->_pdo = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME,DB_USER,DB_PASSWORD);
-    }catch(PDOException $e){
+  private function __construct()
+  {
+    try {
+      $this->_pdo = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
+    } catch (PDOException $e) {
       die($e->getMessage());
     }
   }
-  public static function getInstance(){
-    if(!isset(self::$_instance)){
+  public static function getInstance()
+  {
+    if (!isset(self::$_instance)) {
       self::$_instance = new DB();
     }
     return self::$_instance;
   }
-  public function query($sql,$params=[]){
+  public function query($sql, $params = [])
+  {
     $this->_error = false;
-    if($this->_query=$this->_pdo->prepare($sql)){
+    if ($this->_query = $this->_pdo->prepare($sql)) {
       $x = 1;
-      if(count($params)){
+      if (count($params)) {
         foreach ($params as $param) {
-          $this->_query->bindValue($x,$param);
+          $this->_query->bindValue($x, $param);
           $x++;
         }
       }
 
-      if($this->_query->execute()){
+      if ($this->_query->execute()) {
         $this->_result = $this->_query->fetchALL(PDO::FETCH_OBJ);
         $this->_count =  $this->_query->rowCount();
         $this->_lastInsertID = $this->_pdo->lastInsertId();
-      }else{
+      } else {
         $this->_error = true;
       }
     }
     return $this;
   }
 
-  protected function _read($table,$params=[]){
-      $conditionString = '';
-      $bind = [];
-      $order = '';
-      $limit = '';
+  protected function _read($table, $params = [])
+  {
+    $conditionString = '';
+    $bind = [];
+    $order = '';
+    $limit = '';
 
-      //conditions
-      if(isset($params['conditions'])){
-        if(is_array($params['conditions'])){
-          foreach ($params['conditions'] as $condition) {
-            $conditionString  .= ' '.$condition.' AND';
-          }
-          $conditionString = trim($conditionString);
-          $conditionString = rtrim($conditionString,' AND');
-        }else{
-          $conditionString = $params['conditions'];
+    //conditions
+    if (isset($params['conditions'])) {
+      if (is_array($params['conditions'])) {
+        foreach ($params['conditions'] as $condition) {
+          $conditionString  .= ' ' . $condition . ' AND';
         }
-        $conditionString = " WHERE ".$conditionString;
+        $conditionString = trim($conditionString);
+        $conditionString = rtrim($conditionString, ' AND');
+      } else {
+        $conditionString = $params['conditions'];
       }
+      $conditionString = " WHERE " . $conditionString;
+    }
 
-      //bind
-      if(array_key_exists('bind',$params)){
-        $bind = $params['bind'];
-      }
+    //bind
+    if (array_key_exists('bind', $params)) {
+      $bind = $params['bind'];
+    }
 
-      //order
-      if(array_key_exists('order',$params)){
-        $order = ' ORDER BY '.$params['order'];
-      }
-      //Limit
-      if(array_key_exists('limit',$params)){
-        $limit = ' LIMIT '.$params['limit'];
-      }
+    //order
+    if (array_key_exists('order', $params)) {
+      $order = ' ORDER BY ' . $params['order'];
+    }
+    //Limit
+    if (array_key_exists('limit', $params)) {
+      $limit = ' LIMIT ' . $params['limit'];
+    }
 
-      $sql = "SELECT * FROM {$table}{$conditionString}{$order}{$limit}";
-      if($this->query($sql,$bind)){
-        if(!count($this->_result)) return false;
-        return true;
-      }
-      return false;
-
+    $sql = "SELECT * FROM {$table}{$conditionString}{$order}{$limit}";
+    if ($this->query($sql, $bind)) {
+      if (!count($this->_result)) return false;
+      return true;
+    }
+    return false;
   }
 
-  public function find($table,$params=[]){
-    if($this->_read($table,$params)){
+  public function find($table, $params = [])
+  {
+    if ($this->_read($table, $params)) {
       return $this->results();
     }
     return false;
   }
 
-  public function findFirst($table,$params=[]){
-    if($this->_read($table,$params)){
+  public function findFirst($table, $params = [])
+  {
+    if ($this->_read($table, $params)) {
       return $this->first();
     }
     return false;
   }
 
 
-  public function insert($table,$fields=[]){
+  public function insert($table, $fields = [])
+  {
     $fieldString = '';
     $valeString = '';
     $values = [];
     foreach ($fields as $field => $value) {
-      $fieldString .='`'.$field.'`,';
+      $fieldString .= '`' . $field . '`,';
       $valeString .= '?,';
       $values[] = $value;
     }
-    $fieldString = rtrim($fieldString,',');
-    $valeString = rtrim($valeString,',');
+    $fieldString = rtrim($fieldString, ',');
+    $valeString = rtrim($valeString, ',');
 
     $sql = "INSERT INTO {$table} ({$fieldString}) VALUES ({$valeString})";
-    if(!$this->query($sql,$values)->error()){
+    if (!$this->query($sql, $values)->error()) {
       return true;
     }
     return false;
   }
 
-  public function update($table,$id,$fields=[]){
+  public function update($table, $id, $fields = [])
+  {
     $fieldString = '';
 
     foreach ($fields as $field => $value) {
-      $fieldString .=' '.$field.'=?,';
+      $fieldString .= ' ' . $field . '=?,';
       $values[] = $value;
     }
-    $fieldString = rtrim($fieldString,',');
+    $fieldString = rtrim($fieldString, ',');
 
     $sql = "UPDATE {$table} SET {$fieldString} WHERE id={$id}";
-    if(!$this->query($sql,$values)->error()){
+    if (!$this->query($sql, $values)->error()) {
       return true;
     }
     return false;
   }
 
-  public function delete($table,$id){
+  public function delete($table, $id)
+  {
     $sql = "DELETE FROM {$table} WHERE id={$id}";
-    if(!$this->query($sql)->error()){
+    if (!$this->query($sql)->error()) {
       return true;
     }
     return false;
   }
-  public function results(){
+  public function results()
+  {
     return $this->_result;
   }
-  public function first(){
+  public function first()
+  {
     return (!empty($this->_result)) ? $this->_result[0] : [];
   }
 
-  public function count(){
+  public function count()
+  {
     return $this->_count;
   }
 
-  public function lastID(){
+  public function lastID()
+  {
     return $this->_lastInsertID;
   }
 
-  public function get_columns($table){
+  public function get_columns($table)
+  {
     $sql = "SHOW COLUMNS FROM {$table}";
     return $this->query($sql)->results();
   }
 
-public function error(){
-  return $this->_error;
-}
-public function search($table,$tag){
-  $condition = 'false';
-  //dnd(json_decode($this->get_columns($table)));
-  foreach($this->get_columns($table) as $col){
-    //dnc($col->Field);
-    $condition.= " OR $col->Field LIKE '%{$tag}%'";
+  public function error()
+  {
+    return $this->_error;
   }
-  $sql = "SELECT * FROM $table WHERE ($condition)"; 
-  //dnd($sql);
-  if(!$this->query($sql)->_error){
-    return $this->results();
+  public function search($table, $tag)
+  {
+    $condition = 'false';
+    //dnd(json_decode($this->get_columns($table)));
+    foreach ($this->get_columns($table) as $col) {
+      //dnc($col->Field);
+      if ($col->Field != "password" and $col->Field != "id") {
+        $condition .= " OR $col->Field LIKE '%{$tag}%'";
+      }
+    }
+    $sql = "SELECT * FROM $table WHERE ($condition)";
+    //dnd($sql);
+    if (!$this->query($sql)->_error) {
+      return $this->results();
+    }
+    return false;
   }
-  return false;
-}
-
 }

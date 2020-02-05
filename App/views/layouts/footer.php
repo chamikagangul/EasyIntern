@@ -7,21 +7,21 @@
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <!-- <h5 id="topics">Quick links</h5> -->
                 <ul class="list-unstyled quick-links">
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About</a></li>
+                    <li><a href="home"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                    <li><a href="about/index"><i class="fa fa-angle-double-right"></i>About</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <!-- <h5>FAQ</h5> -->
                 <ul class="list-unstyled quick-links">
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Regiser</a></li>
+                    <li><a href="register/register"><i class="fa fa-angle-double-right"></i>Regiser</a></li>
                     <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>contact Us</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-4 col-md-4">
                 <!-- <h5>About</h5> -->
                 <ul class="list-unstyled quick-links">
-                    <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>LogIn</a></li>
+                    <li><a href="register/login"><i class="fa fa-angle-double-right"></i>LogIn</a></li>
                     <li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Term & conditions</a></li>
                 </ul>
             </div>
